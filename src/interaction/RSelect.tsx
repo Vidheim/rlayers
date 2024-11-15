@@ -80,7 +80,7 @@ export interface RSelectProps {
      * Collection where the interaction will place selected features.
      * If not set the interaction will create a collection.
      */
-    features?: Collection<Feature<Geometry>> | Feature<Geometry>;
+    features?: Collection<Feature<Geometry>>;
 
     /**
      * A function that takes a Feature and a Layer and returns true if the
