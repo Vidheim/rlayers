@@ -106,7 +106,7 @@ export default class RDraw extends RPointer<RDrawProps> {
     ol: Draw;
 
     createOL(props: RDrawProps): Draw {
-        if (!props.features || !props.source) {
+        if (!(props.features || props.source)) {
             if (!this?.context?.vectorsource) {
                 throw new Error(
                     'A Draw interaction must be part of a vector layer \
