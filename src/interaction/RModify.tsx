@@ -68,8 +68,8 @@ export default class RModify extends RPointer<RModifyProps> {
         if (!props.features) {
             if (!this.context?.vectorsource) {
                 throw new Error(
-                    'A Modify interaction must be part of a vector layer \
-                    if not provided with the features option'
+                    'A Modify interaction must be part of a vector layer ' +
+                        'if not provided with the features option'
                 );
             }
         }

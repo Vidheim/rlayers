@@ -109,15 +109,15 @@ export default class RDraw extends RPointer<RDrawProps> {
         if (!(props.features || props.source)) {
             if (!this?.context?.vectorsource) {
                 throw new Error(
-                    'A Draw interaction must be part of a vector layer \
-                    if not provided with the features or source option'
+                    'A Draw interaction must be part of a vector layer ' +
+                        'if not provided with the features or source option'
                 );
             }
         }
         this.classProps = RDraw.classProps;
         return new Draw({
             type: props.type,
-            source: this.context.vectorsource,
+            source: props.source ?? this.context.vectorsource,
             ...Object.keys(props)
                 .filter((p) => this.classProps.includes(p))
                 .reduce((ac, p) => ({...ac, [p]: props[p]}), {})
