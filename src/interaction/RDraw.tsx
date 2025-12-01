@@ -5,12 +5,12 @@ import {default as Draw, DrawEvent} from 'ol/interaction/Draw';
 import {StyleLike} from 'ol/style/Style';
 import {Vector as SourceVector} from 'ol/source';
 
-import {default as RPointer} from './RPointer';
+import {default as RPointer, type RPointerProps} from './RPointer';
 
 /**
  * @propsfor RDraw
  */
-export interface RDrawProps {
+export interface RDrawProps extends RPointerProps {
     /** Type of the geometry */
     type:
         | 'Point'

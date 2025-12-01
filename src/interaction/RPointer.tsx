@@ -1,15 +1,13 @@
 import React from 'react';
-import {Map, MapBrowserEvent} from 'ol';
+import {MapBrowserEvent} from 'ol';
 import Pointer from 'ol/interaction/Pointer';
 
-import {RContextType} from '../context';
-import {default as RBaseInteraction} from './RBaseInteraction';
-import debug from '../debug';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RPointer
  */
-export interface RPointerProps {
+export interface RPointerProps extends RBaseInteractionProps {
     /** Called on down event (click or touch)
      * if it returns true, a drag sequence is started
      */

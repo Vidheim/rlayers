@@ -2,13 +2,12 @@ import React from 'react';
 import {ObjectEvent} from 'ol/Object';
 import {default as PinchRotate} from 'ol/interaction/PinchRotate';
 
-import {default as RBaseInteraction} from './RBaseInteraction';
-import debug from '../debug';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RPinchRotate
  */
-export interface RPinchRotateProps {
+export interface RPinchRotateProps extends RBaseInteractionProps {
     /** Minimum angle in radians for rotation
      * @default 0.3 */
     threshold?: number;

@@ -3,13 +3,12 @@ import {MapBrowserEvent} from 'ol';
 import {ObjectEvent} from 'ol/Object';
 import {default as MouseWheelZoom} from 'ol/interaction/MouseWheelZoom';
 
-import {default as RBaseInteraction} from './RBaseInteraction';
-import debug from '../debug';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RMouseWheelZoom
  */
-export interface RMouseWheelZoomProps {
+export interface RMouseWheelZoomProps extends RBaseInteractionProps {
     /** An optional OpenLayers condition */
     condition?: (e: MapBrowserEvent<UIEvent>) => boolean;
     /** Zoom speed

@@ -3,13 +3,12 @@ import {MapBrowserEvent} from 'ol';
 import {ObjectEvent} from 'ol/Object';
 import {default as KeyboardPan} from 'ol/interaction/KeyboardPan';
 
-import {default as RBaseInteraction} from './RBaseInteraction';
-import debug from '../debug';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RKeyboardPan
  */
-export interface RKeyboardPanProps {
+export interface RKeyboardPanProps extends RBaseInteractionProps {
     /** An optional OpenLayers condition */
     condition?: (e: MapBrowserEvent<UIEvent>) => boolean;
     /** Animation duration

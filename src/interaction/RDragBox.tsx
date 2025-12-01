@@ -3,13 +3,12 @@ import {MapBrowserEvent} from 'ol';
 import {Pixel} from 'ol/pixel';
 import {default as DragBox, DragBoxEvent} from 'ol/interaction/DragBox';
 
-import {default as RPointer} from './RPointer';
-import debug from '../debug';
+import {default as RPointer, type RPointerProps} from './RPointer';
 
 /**
  * @propsfor RDragBox
  */
-export interface RDragBoxProps {
+export interface RDragBoxProps extends RPointerProps {
     /** A CSS class to be used for the box */
     className?: string;
     /** An optional OpenLayers condition */

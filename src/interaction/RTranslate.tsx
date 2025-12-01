@@ -5,13 +5,12 @@ import Geometry from 'ol/geom/Geometry';
 import BaseLayer from 'ol/layer/Base';
 import RenderFeature from 'ol/render/Feature';
 
-import {default as RPointer} from './RPointer';
-import debug from '../debug';
+import {default as RPointer, type RPointerProps} from './RPointer';
 
 /**
  * @propsfor RTranslate
  */
-export interface RTranslateProps {
+export interface RTranslateProps extends RPointerProps {
     /** Translatable features
      * @default all */
     features?: Collection<Feature<Geometry>> | Feature<Geometry>;

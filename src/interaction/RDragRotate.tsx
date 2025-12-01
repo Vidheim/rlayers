@@ -3,13 +3,12 @@ import {MapBrowserEvent} from 'ol';
 import {ObjectEvent} from 'ol/Object';
 import {default as DragRotate} from 'ol/interaction/DragRotate';
 
-import {default as RBaseInteraction} from './RBaseInteraction';
-import debug from '../debug';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RDragRotate
  */
-export interface RDragRotateProps {
+export interface RDragRotateProps extends RBaseInteractionProps {
     /** An optional OpenLayers condition */
     condition?: (e: MapBrowserEvent<UIEvent>) => boolean;
     /** Animation duration

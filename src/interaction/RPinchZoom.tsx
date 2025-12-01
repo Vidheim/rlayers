@@ -2,13 +2,12 @@ import React from 'react';
 import {ObjectEvent} from 'ol/Object';
 import {default as PinchZoom} from 'ol/interaction/PinchZoom';
 
-import {default as RBaseInteraction} from './RBaseInteraction';
-import debug from '../debug';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RPinchZoom
  */
-export interface RPinchZoomProps {
+export interface RPinchZoomProps extends RBaseInteractionProps {
     /** Animation duration
      * @default 400 */
     duration?: number;

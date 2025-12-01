@@ -6,12 +6,12 @@ import Geometry from 'ol/geom/Geometry';
 import Layer from 'ol/layer/Layer';
 import RenderFeature from 'ol/render/Feature';
 
-import {default as RBaseInteraction} from './RBaseInteraction';
+import {default as RBaseInteraction, type RBaseInteractionProps} from './RBaseInteraction';
 
 /**
  * @propsfor RSelect
  */
-export interface RSelectProps {
+export interface RSelectProps extends RBaseInteractionProps {
     /**
      * An optional OpenLayers condition to allow selection of the feature.
      * Use this if you want to use different events for add and remove instead

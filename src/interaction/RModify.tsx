@@ -4,12 +4,12 @@ import {Geometry} from 'ol/geom';
 import {default as Modify, ModifyEvent} from 'ol/interaction/Modify';
 import {StyleLike} from 'ol/style/Style';
 
-import {default as RPointer} from './RPointer';
+import {default as RPointer, type RPointerProps} from './RPointer';
 
 /**
  * @propsfor RModify
  */
-export interface RModifyProps {
+export interface RModifyProps extends RPointerProps {
     /** An optionnal condition for triggering the interaction
      * @default primaryAction */
     condition?: (e: MapBrowserEvent<UIEvent>) => boolean;

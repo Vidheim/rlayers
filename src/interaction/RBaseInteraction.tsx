@@ -5,12 +5,19 @@ import {RContextType} from '../context';
 import {RlayersBase} from '../REvent';
 import debug from '../debug';
 
+export interface RBaseInteractionProps {
+    active?: boolean;
+}
+
 /**
  * A basic Base interaction component
  *
  * It is meant to be be extended by more specific interactions
  */
-export default class RBaseInteraction<P> extends RlayersBase<P, Record<string, never>> {
+export default class RBaseInteraction<P extends RBaseInteractionProps> extends RlayersBase<
+    P,
+    Record<string, never>
+> {
     protected static classProps: string[] = [];
     classProps: string[];
     ol: Interaction;
@@ -35,6 +42,9 @@ export default class RBaseInteraction<P> extends RlayersBase<P, Record<string, n
                 this.componentDidMount();
                 break;
             }
+        if (typeof this.props.active === 'boolean' && prevProps?.active !== this.props.active) {
+            this.ol.setActive(this.props.active);
+        }
         super.refresh(prevProps);
     }
 
