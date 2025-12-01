@@ -41,21 +41,27 @@ import {default as RStyle} from '../style/RStyle';
  * @example
  * <RLayerVector<RenderFeature> format={new GeoJSON({featureProjection: 'EPSG:3857'})} />
  */
+export interface RLayerVectorProps<F extends FeatureLike = Feature<Geometry>>
+    extends RLayerBaseVectorProps<F> {
+    source?: SourceVector<F>;
+}
 export default class RLayerVector<
     F extends FeatureLike = Feature<Geometry>
-> extends RLayerBaseVector<F, RLayerBaseVectorProps<F>> {
+> extends RLayerBaseVector<F, RLayerVectorProps<F>> {
     ol: LayerVector<SourceVector<F>, F>;
     source: SourceVector<F>;
 
-    protected createSource(props: Readonly<RLayerBaseVectorProps<F>>): BaseObject[] {
-        this.source = new SourceVector<F>({
-            features: this.props.features,
-            url: this.props.url,
-            format: this.props.format,
-            loader: this.props.loader,
-            wrapX: this.props.wrapX,
-            strategy: this.props.strategy
-        });
+    protected createSource(props: Readonly<RLayerVectorProps<F>>): BaseObject[] {
+        this.source =
+            props.source ??
+            new SourceVector<F>({
+                features: this.props.features,
+                url: this.props.url,
+                format: this.props.format,
+                loader: this.props.loader,
+                wrapX: this.props.wrapX,
+                strategy: this.props.strategy
+            });
         this.ol = new LayerVector<SourceVector<F>, F>({
             ...props,
             style: RStyle.getStyle(this.props.style),
@@ -64,7 +70,7 @@ export default class RLayerVector<
         return [this.ol, this.source];
     }
 
-    protected refresh(prevProps?: RLayerBaseVectorProps<F>): void {
+    protected refresh(prevProps?: RLayerVectorProps<F>): void {
         super.refresh(prevProps);
         if (prevProps?.url !== this.props.url) {
             this.source.setUrl(this.props.url);
