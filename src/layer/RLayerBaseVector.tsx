@@ -7,18 +7,17 @@ import CanvasVectorTileLayerRenderer from 'ol/renderer/canvas/VectorTileLayer';
 import CanvasVectorImageLayerRenderer from 'ol/renderer/canvas/VectorImageLayer';
 import WebGLPointsLayerRenderer from 'ol/renderer/webgl/PointsLayer';
 import {Vector as SourceVector} from 'ol/source';
-import FeatureFormat, {FeatureToFeatureClass} from 'ol/format/Feature';
+import FeatureFormat from 'ol/format/Feature';
 import {FeatureLoader, FeatureUrlFunction} from 'ol/featureloader';
 import BaseObject from 'ol/Object';
-import {FeatureClass, FeatureLike} from 'ol/Feature';
+import {FeatureLike} from 'ol/Feature';
+import {Collection} from 'ol';
 
 import {RContext, RContextType} from '../context';
 import {default as RLayer, RLayerProps} from './RLayer';
 import {default as RFeature, RFeatureUIEvent} from '../RFeature';
 import {default as RStyle, RStyleLike} from '../style/RStyle';
 import {OLEvent, RlayersBase} from '../REvent';
-
-import debug from '../debug';
 
 export const featureHandlersSymbol = '_rlayers_feature_handlers';
 export type FeatureHandlers = Record<OLEvent, number>;
@@ -44,7 +43,7 @@ export interface RLayerBaseVectorProps<F extends FeatureLike> extends RLayerProp
      *
      * Prefer nesting JSX <RFeature> components inside the layer in this case.
      */
-    features?: F[];
+    features?: F[] | Collection<F>;
     /** Format of the features when `url` is used
      *
      * this property currently does not support dynamic updates

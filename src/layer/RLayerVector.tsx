@@ -1,15 +1,13 @@
 import React from 'react';
-import {Feature, Map as Map} from 'ol';
+import {Feature} from 'ol';
 import {Vector as LayerVector} from 'ol/layer';
 import {Vector as SourceVector} from 'ol/source';
 import {FeatureLike} from 'ol/Feature';
+import BaseObject from 'ol/Object';
+import {Geometry} from 'ol/geom';
 
-import {RContextType} from '../context';
 import {default as RLayerBaseVector, RLayerBaseVectorProps} from './RLayerBaseVector';
 import {default as RStyle} from '../style/RStyle';
-import BaseObject from 'ol/Object';
-import debug from '../debug';
-import {Geometry} from 'ol/geom';
 
 /**
  * A vector layer
