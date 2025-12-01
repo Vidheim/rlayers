@@ -93,7 +93,7 @@ export default class RDraw extends RPointer<RDrawProps> {
     protected static classProps = [
         'clickTolerance',
         'features',
-        'soruce',
+        'source',
         'condition',
         'finishCondition',
         'freehandCondition',
