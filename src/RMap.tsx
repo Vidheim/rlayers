@@ -114,6 +114,26 @@ export interface RMapProps extends PropsWithChildren<unknown> {
      * @default true
      */
     constrainRotation?: boolean | number;
+    /**
+     * If true, the resolution min/max values will be applied smoothly, i. e. allow the view to exceed slightly the given resolution or zoom bounds.
+     * @default true
+     */
+    smoothResolutionConstraint?: boolean;
+    /**
+     * If true, the extent constraint will only apply to the view center and not the whole extent.
+     * @default false
+     */
+    constrainOnlyCenter?: boolean;
+    /**
+     * If true, the extent constraint will be applied smoothly, i.e. allow the view to go slightly outside of the given extent.
+     * @default true
+     */
+    smoothExtentConstraint?: boolean;
+    /**
+     * Allow the view to be zoomed out to show the full configured extent. By default, when a view is configured with an extent, users will not be able to zoom out so the viewport exceeds the extent in either dimension. This means the full extent may not be visible if the viewport is taller or wider than the aspect ratio of the configured extent. If showFullExtent is true, the user will be able to zoom out so that the viewport exceeds the height or width of the configured extent, but not both, allowing the full extent to be shown.
+     * @default false
+     */
+    showFullExtent?: boolean;
 }
 
 /**
@@ -143,7 +163,11 @@ export default class RMap extends RlayersBase<RMapProps, Record<string, never>> 
                 minZoom: props.minZoom,
                 maxZoom: props.maxZoom,
                 enableRotation: props.enableRotation,
-                constrainRotation: props.constrainRotation
+                constrainRotation: props.constrainRotation,
+                smoothExtentConstraint: props.smoothExtentConstraint,
+                constrainOnlyCenter: props.constrainOnlyCenter,
+                smoothResolutionConstraint: props.smoothResolutionConstraint,
+                showFullExtent: props.showFullExtent
             })
         });
         if (this.props.view) this.ol.on('moveend', this.updateView);
