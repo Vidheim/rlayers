@@ -1,10 +1,11 @@
 import React, {PropsWithChildren} from 'react';
-import {Map, View, MapBrowserEvent, MapEvent} from 'ol';
+import {Map, View, MapBrowserEvent, MapEvent, Collection} from 'ol';
 import RenderEvent from 'ol/render/Event';
 import BaseEvent from 'ol/events/Event';
 import {Extent} from 'ol/extent';
 import {Coordinate} from 'ol/coordinate';
 import {ProjectionLike} from 'ol/proj';
+import {Interaction} from 'ol/interaction';
 
 import {RContext} from './context';
 import {RlayersBase} from './REvent';
@@ -45,10 +46,9 @@ export interface RMapProps extends PropsWithChildren<unknown> {
      */
     noDefaultControls?: boolean;
     /**
-     * Do not include any default interactions. Cannot be changed once set.
-     * @default false
+     * Interactions that are initially added to the map. If not specified, defaults is used.
      */
-    noDefaultInteractions?: boolean;
+    interactions?: Collection<Interaction> | Array<Interaction>;
     /** View projection
      * @default 'ESPG:3857'
      */
@@ -150,7 +150,7 @@ export default class RMap extends RlayersBase<RMapProps, Record<string, never>> 
         this.target = React.createRef();
         this.ol = new Map({
             controls: props.noDefaultControls ? [] : undefined,
-            interactions: props.noDefaultInteractions ? [] : undefined,
+            interactions: props.interactions,
             view: new View({
                 projection: props.projection,
                 center: props.initial.center,
